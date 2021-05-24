@@ -1,0 +1,38 @@
+.client__wrapper {
+    .logo__mobile {
+        display: none;
+    }
+    .topbar {
+        background-color: #e5f8ff;
+        padding: 15px 0;
+    }
+    .topbar__flex {
+        position: relative;
+        display: flex;
+        align-items: center;    
+        justify-content: space-between;   
+    }
+    .topbar__item {
+        &:first-child a {
+            padding: 0;
+        }
+        img {
+            width: auto;
+            height: 40px;
+            object-fit: contain;
+        }
+        a {
+            color: rgb(46, 44, 44);
+            font-size: 18px;
+            padding: 5px 15px;
+            &.active {
+                border-bottom: 1px solid #0f24e0;
+            }
+        }    
+        &:nth-child(2) {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }    
+    }   
+}

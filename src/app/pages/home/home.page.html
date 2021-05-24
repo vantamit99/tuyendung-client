@@ -1,0 +1,57 @@
+<div class="home">
+    <div class="search">
+        <div class="flex">
+            <div class="item">
+                <mat-form-field appearance="fill">
+                    <mat-label>--- Địa điểm làm việc ---</mat-label>
+                    <mat-select (selectionChange)="onChangeArea($event)">
+                        <mat-option value="all">Tất cả khu vực</mat-option>
+                        <mat-option *ngFor="let area of arrArea" [value]="area.id">{{area.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="item">
+                <mat-form-field appearance="fill">
+                    <mat-label>Tìm việc nhanh</mat-label>
+                    <input matInput type="text" placeholder="Bạn tìm việc gì" (keyup)="onSearch($event)">
+                </mat-form-field>
+            </div>            
+            <!-- <div class="item">
+                <mat-form-field appearance="fill">                   
+                    <mat-label>--- Mức lương mong muốn ---</mat-label>
+                    <mat-select>
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let salary of arrSalary" [value]="salary.id">{{salary.viewValue}}</mat-option>                    
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+        </div>        
+    </div>   
+    <div class="job">
+        <div class="category">
+            <div class="category__list">
+                <div class="category__item" *ngFor="let cate of arrCategory">
+                    <a routerLink="/search" [queryParams]="{cate_id: cate.id}" [ngClass]="{'active': cate.id == selectedCateId}">{{cate.name}}</a>
+                </div>                
+            </div>
+        </div>
+        <div class="job__all">
+            <div class="sort">
+                <div>Tìm thấy <b>{{totalPosts}}</b> công việc</div>
+                <div>                   
+                    <mat-form-field>
+                        <mat-label>--- Sắp xếp theo ---</mat-label>
+                        <mat-select>
+                            <mat-option>None</mat-option>
+                            <mat-option value="nearest">Gần nhất</mat-option>
+                            <mat-option value="oldest">Cũ nhất</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="job__list">
+                <router-outlet></router-outlet>          
+            </div>
+        </div>
+    </div>
+</div>
